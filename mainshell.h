@@ -10,4 +10,4 @@
 void _write(const char *text_output);
 void prompt(void);
 void user_cmd(char *cmd, size_t s);
-#endif
+#endif /*MAINSHELL_H*/
