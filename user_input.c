@@ -7,7 +7,7 @@
  */
 void user_cmd(char *cmd, size_t s)
 {
-if (fgets(cmd, s, stdin) != NULL)
+if
 {
 cmd[strcspn(cmd, "\n")] = '\0';
 }
