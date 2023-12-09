@@ -1,11 +1,11 @@
-#include "mainshell.h"
+#include "shell.h"
 
 /**
- *_write - prints to standard output
+ *_print - prints to standard output
  *@text_output:parameter
  *Return:void
  */
-void _write(const char *text_output)
+void _print(const char *text_output)
 {
 write(STDOUT_FILENO, text_output, strlen(text_output));
 }

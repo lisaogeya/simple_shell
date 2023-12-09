@@ -1,27 +1,29 @@
-#include "mainshell.h"
+#include "shell.h"
 /**
- * user_cmd - read user input
+ * user_input - read user input
+ * getline - built in function
  * @s:size
  * @cmd:pointer parameter
+ *
  * Return:0
  */
-void user_cmd(char *cmd, size_t s)
+void user_input(char *cmd, size_t s)
 {
-if
+ssize_t scan = getline(&cmd, &s, stdin);
+if (scan != -1)
 {
-cmd[strcspn(cmd, "\n")] = '\0';
+cmd[scan - 1] = '\0';
 }
-else
+else if (!feof(stdin))
 {
-if (!feof(stdin))
-{
-_write("Error\n");
+_print("Error\n");
 exit(EXIT_FAILURE);
 }
 else
 {
-_write("\n");
+_print("\n");
 exit(EXIT_SUCCESS);
 }
+free(cmd);
 }
-}
+
