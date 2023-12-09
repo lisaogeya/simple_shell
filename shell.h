@@ -11,7 +11,6 @@
 
 void write_str(const char *str);
 void _print(const char *text_output);
-void prompt(void);
 void user_input(char *cmd, size_t s);
 void exec_cmd(const char *cmd);
 
