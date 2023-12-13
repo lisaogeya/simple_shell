@@ -11,8 +11,10 @@
 
 void write_str(const char *str);
 void _print(const char *text_output);
-void user_input(char *cmd, size_t s);
-void exec_cmd(const char *cmd);
+void infinite_loop(void);
+char read_input(char *command, size_t s);
+char print_input(char *command, char **arg_cmd, int tally);
+int exec_cmd(char **args);
 
 
 #endif /*MAINSHELL_H*/

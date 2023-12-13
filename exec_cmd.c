@@ -1,11 +1,10 @@
 #include "shell.h"
 /**
  *exec_cmd -function that executes command in child proces
- *@cmd:constant parameter
+ *@args:arguments for commands
  *Return:nothing
- */
-
-void exec_cmd(const char *cmd)
+ 
+int exec_cmd(char **args)
 {
 pid_t child_pid = fork();
 if (child_pid == -1)
@@ -15,24 +14,19 @@ exit(EXIT_FAILURE);
 }
 else if (child_pid == 0)
 {
-int tally = 0;
-char *arg_cmd[200];
-char *delim = " ";
-char *tkn = strtok((char *)cmd, delim);
-
-while (tkn != NULL)
+char *arg_cmd[2];
+arg_cmd[0] = (char *)args;
+arg_cmd[1] = NULL;
+if (execve(args[0], args, NULL) < 0)
 {
-arg_cmd[tally] = tkn;
-tally++;
-tkn = strtok(0, delim);
-}
-arg_cmd[tally] = NULL;
-execve(arg_cmd[0], arg_cmd, NULL);
-perror("Failed to execute command.\n");
+perror("Command execution failed!!.\n");
 exit(EXIT_FAILURE);
+}
 }
 else
 {
-wait(NULL);
+int status;
+waitpid(child_pid, &status, 0);
 }
-}
+return (1);
+}*/

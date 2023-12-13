@@ -1,24 +1,26 @@
 #include "shell.h"
+#define SIZE 200
 /**
  * infinite_loop - loops all functions for shell execution
  *
  * Return:0
- */
+ 
 void infinite_loop(void)
 {
+
 int status;
-char *get_line;
-char **cmd;
+char *command[SIZE];
+char **args;
 do {
-char *prompt = "Lsh $ > ";
+char *prompt = "Lisa__sh $ > ";
 write(STDOUT_FILENO, &prompt, strlen(prompt));
 
-get_line = read_input();
-cmd = print_input();
-status = exec_cmd(cmd);
+read_input(command, SIZE);
+print_input(command);
+status = exec_cmd(args);
 
-free(get_line);
-free(cmd);
+free(command);
+free(args);
 
-} while (status !0);
-}
+} while (status);
+}*/
